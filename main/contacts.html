@@ -57,10 +57,63 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Contacts</h1>
+      <div class="row">
+        <div class="col">
+          <h1 class="my-4">Contacts</h1>
+        </div>
 
-      <div id="medicin_list" class="list-group">
+        <div class="col align-self-center">
+          <button type="button" style="float:right" class="btn btn-primary" data-toggle="modal" data-target="#add_contact">+</button>
+        </div>
       </div>
+
+      <div id="medicin_list" class="col list-group"></div>
+
+      <!-- Modal -->
+    <div class="modal fade" id="add_contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add contact</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="input_name">Name</label>
+                <input type="text" class="form-control" id="input_name" aria-describedby="name_help" placeholder="Anna Andersson">
+                <small id="name_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              </div>
+              <div class="form-group">
+                <label for="input_phone">Phone number</label>
+                <input type="tel" class="form-control" id="input_phone" placeholder="07XXXXXXXX">
+              </div>
+              <div class="form-group">
+                <label for="input_email">Email</label>
+                <input type="email" class="form-control" id="input_phone" placeholder="anna.andersson@mail.com">
+              </div>
+              <div class="form-group">
+                <label for="input_tags">Tags</label>
+                <br />
+                <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
+                  <button type="button" id="tag_family" onclick="toggle_button_press(this)" class="btn btn-info disabled">#Family</button>
+                  <button type="button" id="tag_school" onclick="toggle_button_press(this)" class="btn btn-success disabled">#School</button>
+                  <button type="button" id="tag_daycare" onclick="toggle_button_press(this)" class="btn btn-warning disabled">#Daycare</button>
+                  <button type="button" id="tag_medical" onclick="toggle_button_press(this)" class="btn btn-danger disabled">#Medical</button>
+                </div>
+              </div>
+            </form>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Add Contact</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
       <script type="text/javascript">
         $(document).ready(function() {
@@ -79,6 +132,10 @@
               list_item.append('<p class="list-group-item-text">' + json.email + '</p>');
 
               $("#medicin_list").append(list_item);
+            }
+
+            toggle_button_press = (button) => {
+              $(button).toggleClass("disabled");
             }
           });
         });
