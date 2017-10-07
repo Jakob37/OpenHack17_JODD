@@ -96,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="on_submit()">New post</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">New post</button>
         </div>
       </div>
     </div>
@@ -123,13 +123,14 @@
       }
 
       on_submit = () => {
-          console.log("clicked");
           $.ajax({
             type: 'POST',
             url: 'http://127.0.0.1:5000/add_event/',
             data: JSON.stringify({'labels': "NO LABELS", 'data':document.getElementById('comment').value}),
             contentType: 'application/json'
             });
+
+
       }
   </script>
 
