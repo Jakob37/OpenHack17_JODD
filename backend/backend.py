@@ -12,8 +12,8 @@ def hello_world():
 @app.route('/current_events/')
 def current_events():
     events = [
-        {'date':'2017-10-06', 'data':'Kalle har haft ont i tån'},
-        {'date':'2017-10-05', 'data':'Kalle har varit hos tandläkaren och ar trott.'}
+        {'date':'2017-10-06', 'data':'Kalle har haft ont i tan'},
+        {'date':'2017-10-05', 'data':'Kalle har varit hos tandlakaren och ar trott.'}
     ]
     return json.dumps(events)
 
@@ -28,7 +28,8 @@ def medicins():
 @app.route('/checklists/')
 def checklists():
     checklists = [
-                
+        {'name':'Bedtime', 'data':'Time for bed'},
+        {'name':'Morning routine', 'data':'This is how we get started in the morning'}
     ]
     return json.dumps(checklists)
 
