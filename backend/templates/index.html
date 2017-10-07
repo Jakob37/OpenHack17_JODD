@@ -3,12 +3,6 @@
 
 <head>
 
-
-  <!--onclick="$.post('http://127.0.0.1:5000/add_event/',-->
-  <!--json={'mytext':'lalala'},-->
-  <!--contentType='application/json'-->
-  <!--)"-->
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -28,36 +22,6 @@
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-
-  <!--<script>-->
-      <!--$.ajax({-->
-          <!--type: "POST",-->
-          <!--url: "http://127.0.0.1:5000/add_event/",-->
-          <!--data: {'mytext':'lalala'},-->
-          <!--contentType: "application/json; charset=utf-8",-->
-          <!--dataType: "json",-->
-          <!--success: function(data){alert(data);},-->
-          <!--failure: function(errMsg) {-->
-              <!--alert(errMsg);-->
-          <!--}-->
-      <!--});-->
-  <!--</script>-->
-
-  <script>
-    function do_request() {
-//        alert("called");
-
-        $.ajax({
-            type: "POST",
-            url: 'http://127.0.0.1:5000/add_event/',
-            data: {'data':'content'},
-            success: function() {alert("Success!")},
-            dataType: 'json'
-        });
-    }
-  </script>
-
-
 </head>
 
 <body>
@@ -96,30 +60,47 @@
 
 <!-- Page Content -->
 <div class="container">
-  <h1 class="my-4">Add new information</h1>
 
-  <form>
-    <div class="form-group">
-      <label for="inputsm">Tags</label>
-      <input class="form-control input-sm" id="inputsm" type="text">
-    </div>
-    <label for="comment">Comment:</label>
-    <textarea class="form-control mb-4" rows="5" id="comment" name="description"></textarea>
-
-    <button type="button" class="btn btn-lg mb-4"
-            onclick="$.ajax({
-            type: 'POST',
-            url: 'http://127.0.0.1:5000/add_event/',
-            data: JSON.stringify({'data':'content'}),
-            contentType: 'application/json'
-            });">
-
-      <!--&gt;-->
+  <h1 class="my-4">Current information
+    <button type="button" style="float: right" class="btn btn-lg" onclick='location.href="add_info_page.html"'>
       <span class="fa fa-pencil"></span>
       New post
     </button>
-  </form>
+  </h1>
+
+  <div id="medicin_list" class="list-group">
+  </div>
+
+  <script type="text/javascript">
+      $(document).ready(function() {
+          $.get("http://127.0.0.1:5000/current_events/", function(data, status) {
+
+              console.log("request!");
+
+              var arr = JSON.parse(data);
+
+              for (var i = 0; i < arr.length; i++) {
+                  var json = arr[i];
+                  var list_item = $('<a class="list-group-item m-1"></a>');
+                  list_item.append('<h4>' + json.date + '</h4>');
+                  list_item.append('<p class="list-group-item-text">' + json.data + '</p>');
+
+                  $("#medicin_list").append(list_item);
+              }
+          });
+      });
+  </script>
+
 </div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-1 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
+  </div>
+  <!-- /.container -->
+</footer>
 
 </body>
 
