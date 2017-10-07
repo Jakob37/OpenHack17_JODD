@@ -59,21 +59,59 @@
 <div class="container">
 
   <h1 class="my-4">Current information
-    <button type="button" style="float: right" class="btn btn-lg" onclick='location.href="add_info_page.html"'>
+    <button type="button" style="float: right" class="btn btn-lg" data-toggle="modal" data-target="#add_info_page">
       <span class="fa fa-pencil"></span>
-      New post
+        New post
     </button>
   </h1>
 
-  <div id="medicin_list" class="list-group">
+  <div id="events_list" class="list-group"></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="add_info_page" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="inputsm">Tags</label>
+            <input class="form-control input-sm" id="inputsm" type="text">
+          </div>
+          <label for="comment">Comment:</label>
+          <textarea class="form-control mb-4" rows="5" id="comment" name="description"></textarea>
+
+          <button type="button" class="btn btn-lg mb-4"
+                  onclick="$.ajax({
+                  type: 'POST',
+                  url: 'http://127.0.0.1:5000/add_event/',
+                  data: JSON.stringify({'labels':document.getElementById('inputsm').value, 'data':document.getElementById('comment').value}),
+                  contentType: 'application/json'
+                  });">
+
+            <!--&gt;-->
+            <span class="fa fa-pencil"></span>
+            New post
+          </button>
+        </form>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="do_request()">Add Contact</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="text/javascript">
       $(document).ready(function() {
           $.get("http://127.0.0.1:5000/current_events/", function(data, status) {
-
-              console.log("request!");
-
               var arr = JSON.parse(data);
 
               for (var i = 0; i < arr.length; i++) {
@@ -82,10 +120,22 @@
                   list_item.append('<h4>' + json.date + '</h4>');
                   list_item.append('<p class="list-group-item-text">' + json.data + '</p>');
 
-                  $("#medicin_list").append(list_item);
+                  $("#events_list").append(list_item);
               }
           });
       });
+
+      function do_request() {
+//        alert("called");
+
+        $.ajax({
+            type: "POST",
+            url: 'http://127.0.0.1:5000/add_event/',
+            data: {'data':'content'},
+            success: function() {alert("Success!")},
+            dataType: 'json'
+        });
+      }
   </script>
 
 </div>
