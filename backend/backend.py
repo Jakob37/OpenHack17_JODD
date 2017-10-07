@@ -32,7 +32,7 @@ def current_events():
     return json.dumps(events)
 
 
-@app.route('/add_event/', methods = ['POST'])
+@app.route('/add_event/', methods=['POST'])
 def add_event():
 
     if request.method == 'POST':
@@ -42,7 +42,7 @@ def add_event():
         date = time.strftime("%Y-%m-%d")
 
         events.insert(0, {'date':date, 'data':data})
-        return render_template('index.html')
+        return '', 204
 
 
 @app.route('/updated_events/')
