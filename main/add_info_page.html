@@ -60,47 +60,22 @@
 
 <!-- Page Content -->
 <div class="container">
+  <h1 class="my-4">Add new information</h1>
 
-  <h1 class="my-4">Current information
-    <button type="button" style="float: right" class="btn btn-lg" onclick='location.href="add_info_page.html"'>
+  <form>
+    <div class="form-group">
+      <label for="inputsm">Tags</label>
+      <input class="form-control input-sm" id="inputsm" type="text">
+    </div>
+    <label for="comment">Comment:</label>
+    <textarea class="form-control mb-4" rows="5" id="comment"></textarea>
+
+    <button type="button" class="btn btn-lg mb-4" onclick='location.href="updated_feed.html"'>
       <span class="fa fa-pencil"></span>
       New post
     </button>
-  </h1>
-
-  <div id="medicin_list" class="list-group">
-  </div>
-
-  <script type="text/javascript">
-      $(document).ready(function() {
-          $.get("http://127.0.0.1:5000/current_events/", function(data, status) {
-
-              console.log("request!");
-
-              var arr = JSON.parse(data);
-
-              for (var i = 0; i < arr.length; i++) {
-                  var json = arr[i];
-                  var list_item = $('<a class="list-group-item m-1"></a>');
-                  list_item.append('<h4>' + json.date + '</h4>');
-                  list_item.append('<p class="list-group-item-text">' + json.data + '</p>');
-
-                  $("#medicin_list").append(list_item);
-              }
-          });
-      });
-  </script>
-
+  </form>
 </div>
-<!-- /.container -->
-
-<!-- Footer -->
-<footer class="py-1 bg-dark">
-  <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2017</p>
-  </div>
-  <!-- /.container -->
-</footer>
 
 </body>
 
