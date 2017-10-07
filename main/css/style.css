@@ -27,3 +27,14 @@ body {
 .portfolio-item {
     margin-bottom: 30px;
 }
+
+#child_portrait {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#about_text {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
