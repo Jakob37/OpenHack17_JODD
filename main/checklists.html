@@ -72,16 +72,22 @@
         $(document).ready(function() {
           $.get("http://127.0.0.1:5000/checklists/", function(data, status) {
             var arr = JSON.parse(data);
-
             for (var i = 0; i < arr.length; i++) {
               var json = arr[i];
               var list_item = $('<a class="list-group-item"></a>');
               list_item.append('<h4>' + json.name + '</h4>');
               list_item.append('<p class="list-group-item-text">' + 
                                json.data + '</p>');
+              var task_list = $('<ul class="list-group"></ul>')
+              for (var i = 0; i < json.items.length; i++) {
+                  var sub_json = json.items[i];
+                  task_list.append('<li class="list-group-item">' + 
+                                   '*' + sub_json.item_text + '</li>');
+              };
+              list_item.append(task_list); 
 
               $("#checklist_list").append(list_item);
-            }
+            };
           });
         });
       </script>

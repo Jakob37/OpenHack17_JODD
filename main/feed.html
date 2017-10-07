@@ -8,13 +8,18 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>OpenHack17 Göteborg - JODD</title>
+    <title>CareFlow</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
   </head>
 
@@ -55,20 +60,30 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Welcome to Child Management Simplified!</h1>
+      <h1 class="my-4">Contacts</h1>
 
-
-      <hr>
-
-      <!-- Call to Action Section -->
-      <div class="row mb-4">
-        <div class="col-md-8">
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-        </div>
-        <div class="col-md-4">
-          <a class="btn btn-lg btn-secondary btn-block" href="#">Call to Action</a>
-        </div>
+      <div id="medicin_list" class="list-group">
       </div>
+
+      <script type="text/javascript">
+          $(document).ready(function() {
+              $.get("http://127.0.0.1:5000/current_events/", function(data, status) {
+
+                  console.log("request!");
+
+                  var arr = JSON.parse(data);
+
+                  for (var i = 0; i < arr.length; i++) {
+                      var json = arr[i];
+                      var list_item = $('<a class="list-group-item m-1"></a>');
+                      list_item.append('<h4>' + json.date + '</h4>');
+                      list_item.append('<p class="list-group-item-text">' + json.data + '</p>');
+
+                      $("#medicin_list").append(list_item);
+                  }
+              });
+          });
+      </script>
 
     </div>
     <!-- /.container -->
@@ -80,11 +95,6 @@
       </div>
       <!-- /.container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
   </body>
 
