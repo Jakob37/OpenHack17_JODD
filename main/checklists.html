@@ -59,11 +59,23 @@
 
       <hr>
 
+      <div id="checklist_list" class="list-group">
+      </div>
         
       <script type="text/javascript">
         $(document).ready(function() {
           $.get("http://127.0.0.1:5000/checklists/", function(data, status) {
-            console.log(data);
+            var arr = JSON.parse(data);
+
+            for (var i = 0; i < arr.length; i++) {
+              var json = arr[i];
+              var list_item = $('<a class="list-group-item"></a>');
+              list_item.append('<h4>' + json.name + '</h4>');
+              list_item.append('<p class="list-group-item-text">' + 
+                               json.data + '</p>');
+
+              $("#checklist_list").append(list_item);
+            }
           });
         });
       </script>
