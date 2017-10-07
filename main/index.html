@@ -81,29 +81,22 @@
         <form>
           <div class="form-group">
             <label for="inputsm">Tags</label>
-            <input class="form-control input-sm" id="inputsm" type="text">
+            <br />
+            <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
+              <button type="button" id="tag_family" onclick="toggle_button_press(this)" class="btn btn-info disabled">Family</button>
+              <button type="button" id="tag_school" onclick="toggle_button_press(this)" class="btn btn-success disabled">School</button>
+              <button type="button" id="tag_daycare" onclick="toggle_button_press(this)" class="btn btn-warning disabled">Daycare</button>
+              <button type="button" id="tag_medical" onclick="toggle_button_press(this)" class="btn btn-danger disabled">Medical</button>
+            </div>
           </div>
           <label for="comment">Comment:</label>
           <textarea class="form-control mb-4" rows="5" id="comment" name="description"></textarea>
-
-          <button type="button" class="btn btn-lg mb-4"
-                  onclick="$.ajax({
-                  type: 'POST',
-                  url: 'http://127.0.0.1:5000/add_event/',
-                  data: JSON.stringify({'labels':document.getElementById('inputsm').value, 'data':document.getElementById('comment').value}),
-                  contentType: 'application/json'
-                  });">
-
-            <!--&gt;-->
-            <span class="fa fa-pencil"></span>
-            New post
-          </button>
         </form>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" onclick="do_request()">Add Contact</button>
+          <button type="button" class="btn btn-primary" onclick="on_submit()">New post</button>
         </div>
       </div>
     </div>
@@ -125,16 +118,18 @@
           });
       });
 
-      function do_request() {
-//        alert("called");
+      toggle_button_press = (button) => {
+        $(button).toggleClass("disabled");
+      }
 
-        $.ajax({
-            type: "POST",
+      on_submit = () => {
+          console.log("clicked");
+          $.ajax({
+            type: 'POST',
             url: 'http://127.0.0.1:5000/add_event/',
-            data: {'data':'content'},
-            success: function() {alert("Success!")},
-            dataType: 'json'
-        });
+            data: JSON.stringify({'labels': "NO LABELS", 'data':document.getElementById('comment').value}),
+            contentType: 'application/json'
+            });
       }
   </script>
 
