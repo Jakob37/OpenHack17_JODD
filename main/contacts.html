@@ -84,24 +84,27 @@
               <div class="form-group">
                 <label for="input_name">Name</label>
                 <input type="text" class="form-control" id="input_name" aria-describedby="name_help" placeholder="Anna Andersson">
-                <small id="name_help" class="form-text text-muted">We'll never share your email with anyone else.</small>
               </div>
+              <div class="form-group">
+                <label for="input_role">Role</label>
+                <input type="text" class="form-control" id="input_role" aria-describedby="name_help" placeholder="Teacher, Nurse, etc.">
+              </div>              
               <div class="form-group">
                 <label for="input_phone">Phone number</label>
                 <input type="tel" class="form-control" id="input_phone" placeholder="07XXXXXXXX">
               </div>
               <div class="form-group">
                 <label for="input_email">Email</label>
-                <input type="email" class="form-control" id="input_phone" placeholder="anna.andersson@mail.com">
+                <input type="email" class="form-control" id="input_email" placeholder="anna.andersson@mail.com">
               </div>
               <div class="form-group">
                 <label for="input_tags">Tags</label>
                 <br />
                 <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
-                  <button type="button" id="tag_family" onclick="toggle_button_press(this)" class="btn btn-info disabled">#Family</button>
-                  <button type="button" id="tag_school" onclick="toggle_button_press(this)" class="btn btn-success disabled">#School</button>
-                  <button type="button" id="tag_daycare" onclick="toggle_button_press(this)" class="btn btn-warning disabled">#Daycare</button>
-                  <button type="button" id="tag_medical" onclick="toggle_button_press(this)" class="btn btn-danger disabled">#Medical</button>
+                  <button type="button" id="tag_family" class="btn btn-outline-info disabled">Family</button>
+                  <button type="button" id="tag_school" class="btn btn-outline-success disabled">School</button>
+                  <button type="button" id="tag_daycare"  class="btn btn-outline-warning disabled">Daycare</button>
+                  <button type="button" id="tag_medical"  class="btn btn-outline-danger disabled">Medical</button>
                 </div>
               </div>
             </form>
@@ -109,7 +112,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Add Contact</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">Add Contact</button>
           </div>
         </div>
       </div>
@@ -133,12 +136,38 @@
 
               $("#medicin_list").append(list_item);
             }
-
-            toggle_button_press = (button) => {
-              $(button).toggleClass("disabled");
-            }
           });
         });
+
+
+        on_submit = () => {
+            $.ajax({
+              type: 'POST',
+              url: 'http://127.0.0.1:5000/add_contact/',
+              data: JSON.stringify({'name': document.getElementById('input_name').value,
+                                    'role': document.getElementById('input_role').value,
+                                    'phone': document.getElementById('input_phone').value,
+                                    'email': document.getElementById('input_email').value,
+                                    'labels': get_labels() }),
+              contentType: 'application/json'
+              });
+        }
+
+        get_labels = () => {
+          var json = [];
+  
+            if ($("#tag_family").hasClass("active")) {
+              json.push("family");
+            } if ($("#tag_school").hasClass("active")) {
+              json.push("school");
+            } if ($("#tag_daycare").hasClass("active")) {
+              json.push("daycare");
+            } if ($("#tag_medical").hasClass("active")) {
+              json.push("medical");
+            }
+  
+          return json;
+        }
       </script>
 
     </div>

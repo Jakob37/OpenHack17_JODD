@@ -83,10 +83,10 @@
             <label for="inputsm">Tags</label>
             <br />
             <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
-              <button type="button" id="tag_family" onclick="toggle_button_press(this)" class="btn btn-info disabled">Family</button>
-              <button type="button" id="tag_school" onclick="toggle_button_press(this)" class="btn btn-success disabled">School</button>
-              <button type="button" id="tag_daycare" onclick="toggle_button_press(this)" class="btn btn-warning disabled">Daycare</button>
-              <button type="button" id="tag_medical" onclick="toggle_button_press(this)" class="btn btn-danger disabled">Medical</button>
+              <button type="button" id="tag_family" value="family" class="btn btn-outline-info disabled">Family</button>
+              <button type="button" id="tag_school" value="school" class="btn btn-outline-success disabled">School</button>
+              <button type="button" id="tag_daycare" value="daycare" class="btn btn-outline-warning disabled">Daycare</button>
+              <button type="button" id="tag_medical" value="medical" class="btn btn-outline-danger disabled">Medical</button>
             </div>
           </div>
           <label for="comment">Comment:</label>
@@ -118,19 +118,29 @@
           });
       });
 
-      toggle_button_press = (button) => {
-        $(button).toggleClass("disabled");
-      }
-
       on_submit = () => {
           $.ajax({
             type: 'POST',
             url: 'http://127.0.0.1:5000/add_event/',
-            data: JSON.stringify({'labels': "NO LABELS", 'data':document.getElementById('comment').value}),
+            data: JSON.stringify({'labels':  get_labels(), 'data':document.getElementById('comment').value}),
             contentType: 'application/json'
             });
+      }
 
+      get_labels = () => {
+        var json = [];
 
+        if ($("#tag_family").hasClass("active")) {
+          json.push("family");
+        } if ($("#tag_school").hasClass("active")) {
+          json.push("school");
+        } if ($("#tag_daycare").hasClass("active")) {
+          json.push("daycare");
+        } if ($("#tag_medical").hasClass("active")) {
+          json.push("medical");
+        }
+
+        return json;
       }
   </script>
 

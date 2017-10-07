@@ -6,8 +6,6 @@ import time
 app = Flask(__name__)
 CORS(app)
 
-
-
 @app.route('/')
 def hello_world():
     return 'Hello, world!'
@@ -25,6 +23,13 @@ events = [
     {'date':'2017-10-05', 'data':'Kalle has been visiting the dentist. He is extra tired '
                                  'today. He should eat an extra banana after lunch. '
                                  'May be angry in the afternoon.'}
+]
+
+contact_list = [
+    {'name':'Annika Gunhild', 'role':'Mother', 'phone':'070-456 23 XX', 'email':'annika.gunhild@careflow.com', 'labels': ['family']},
+    {'name':'Lars Haberg', 'role':'Father', 'phone':'070-456 35 XX', 'email':'lars.haberg@careflow.com', 'labels': ['family']},
+    {'name':'Linda Rohult', 'role':'Teacher', 'phone':'070-234 95 XX', 'email':'linda_rohult@teaching.com', 'labels': ['school']},
+    {'name':'Rin Lyholm', 'role':'Football trainer', 'phone':'070-132 78 XX', 'email':'rin_lyholm_87@football.com', 'labels': ['daycare']},
 ]
 
 @app.route('/current_events/')
@@ -94,10 +99,18 @@ def checklists():
 
 @app.route('/contacts/')
 def contacts():
-    contacts = [
-        {'name':'Annika Gunhild', 'role':'Mother', 'phone':'070-456 23 XX', 'email':'annika.gunhild@careflow.com'},
-        {'name':'Lars Haberg', 'role':'Father', 'phone':'070-456 35 XX', 'email':'lars.haberg@careflow.com'},
-        {'name':'Linda Rohult', 'role':'Teacher', 'phone':'070-234 95 XX', 'email':'linda_rohult@teaching.com'},
-        {'name':'Rin Lyholm', 'role':'Football trainer', 'phone':'070-132 78 XX', 'email':'rin_lyholm_87@football.com'},
-    ]
-    return json.dumps(contacts)
+    return json.dumps(contact_list)
+
+@app.route('/add_contact/', methods=['POST'])
+def add_contact():
+
+    if request.method == 'POST':
+        json = request.get_json()
+        name = json['name']
+        role = json['role']
+        phone = json['phone']
+        email = json['email']
+        labels = json['labels']
+
+        contact_list.insert(0, {'name':name, 'role':role, 'phone':phone, 'email':email, 'labels':labels })
+        return '', 204
