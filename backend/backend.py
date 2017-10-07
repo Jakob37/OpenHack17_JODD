@@ -30,8 +30,19 @@ def medicins():
 @app.route('/checklists/')
 def checklists():
     checklists = [
-        {'name':'Bedtime', 'data':'Time for bed'},
-        {'name':'Morning routine', 'data':'This is how we get started in the morning'}
+        {'name':'Bedtime', 'data':'Time for bed',
+            'items':[
+                {'item_text':'Brush teeth'},
+                {'item_text':'Read bedtime story'},
+                {'item_text':'Leave light on'}
+            ]
+        },
+        {'name':'Morning routine', 'data':'This is how we get started in the morning',
+            'items':[
+                {'item_text':'Brush teeth'},
+                {'item_text':'Make squared pancakes'},
+                {'item_text':'Dont forget lunch box'}
+            ]}
     ]
     return json.dumps(checklists)
 
