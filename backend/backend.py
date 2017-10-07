@@ -5,6 +5,8 @@ import json
 app = Flask(__name__)
 CORS(app)
 
+
+
 @app.route('/')
 def hello_world():
     return 'Hello, world!'
@@ -20,7 +22,7 @@ def current_events():
 @app.route('/medicins/')
 def medicins():
     meds = [
-        {'name':'Paracetamol', 'data':'250mg 3 ggr om dagen.'},
+        {'name':'Paracetamol', 'data':'250mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
         {'name':'Sumatriptan', 'data':'50mg vid tecken av migrananfall.'}
     ]
     return json.dumps(meds)
