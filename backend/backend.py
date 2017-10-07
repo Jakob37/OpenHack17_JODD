@@ -34,3 +34,12 @@ def checklists():
     return json.dumps(checklists)
 
 
+@app.route('/contacts/')
+def contacts():
+    contacts = [
+        {'name':'Annika Gunhild', 'role':'Mother', 'phone':'070-456 23 XX', 'email':'annika.gunhild@careflow.com'},
+        {'name':'Lars Haberg', 'role':'Father', 'phone':'070-456 35 XX', 'email':'lars.haberg@careflow.com'},
+        {'name':'Linda Rohult', 'role':'Teacher', 'phone':'070-234 95 XX', 'email':'linda_rohult@teaching.com'},
+        {'name':'Rin Lyholm', 'role':'Football trainer', 'phone':'070-132 78 XX', 'email':'rin_lyholm_87@football.com'},
+    ]
+    return json.dumps(contacts)
