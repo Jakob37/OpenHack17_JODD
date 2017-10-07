@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>OpenHack17 Göteborg - JODD</title>
+    <title>CareFlow</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -60,30 +60,34 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Checklists</h1>
+      <h1 class="my-4">Contacts</h1>
 
-
-      <hr>
-
-      <div id="checklist_list" class="list-group">
+      <div id="medicin_list" class="list-group">
       </div>
-        
+
       <script type="text/javascript">
         $(document).ready(function() {
-          $.get("http://127.0.0.1:5000/checklists/", function(data, status) {
+          $.get("http://127.0.0.1:5000/contacts/", function(data, status) {
+
+            console.log("request!");
+
             var arr = JSON.parse(data);
 
             for (var i = 0; i < arr.length; i++) {
               var json = arr[i];
-              var list_item = $('<a class="list-group-item"></a>');
+              var list_item = $('<a class="list-group-item m-1"></a>');
               list_item.append('<h4>' + json.name + '</h4>');
-              list_item.append('<p class="list-group-item-text">' + 
-                               json.data + '</p>');
+              list_item.append('<p class="list-group-item-text">' + json.role + '</p>');
+              list_item.append('<p class="list-group-item-text">' + json.phone + '</p>');
+              list_item.append('<p class="list-group-item-text">' + json.email + '</p>');
 
-              $("#checklist_list").append(list_item);
+              $("#medicin_list").append(list_item);
             }
           });
+
+
         });
+
       </script>
 
     </div>
@@ -96,11 +100,6 @@
       </div>
       <!-- /.container -->
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
   </body>
 
