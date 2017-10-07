@@ -1,6 +1,7 @@
 from flask import Flask, current_app, request, redirect, url_for, send_from_directory, render_template
 from flask_cors import CORS
 import json
+import time
 
 app = Flask(__name__)
 CORS(app)
@@ -28,21 +29,6 @@ events = [
 
 @app.route('/current_events/')
 def current_events():
-    # events = [
-    #     {'date':'2017-10-25', 'data':'Fell ill after eating .'},
-    #     {'date':'2017-10-16', 'data':'Got scared by a car yesterday, had trouble calming down. '
-    #                                  'Take it extra slowly when passing the road.'},
-    #     {'date':'2017-10-08', 'data':'Teeth are much better now. Should be able to eat '
-    #                                  'normally by now.'},
-    #     {'date':'2017-10-06', 'data':'Kalle has had trouble with his teeth during the night.'
-    #                                  ' He has not eaten properly, and is very tired. '
-    #                                  'Grandmother is available today if he needs to be '
-    #                                  'picked up extra early.'},
-    #     {'date':'2017-10-05', 'data':'Kalle has been visiting the dentist. He is extra tired '
-    #                                  'today. He should eat an extra banana after lunch. '
-    #                                  'May be angry in the afternoon.'}
-    # ]
-    # events.append({'date':'test', 'data':'Test'})
     return json.dumps(events)
 
 
@@ -50,31 +36,13 @@ def current_events():
 def add_event():
 
     if request.method == 'POST':
-        """modify/update the information for <user_id>"""
-        # you can use <user_id>, which is a str but could
-        # changed to be int or whatever you want, along
-        # with your lxml knowledge to make the required
-        # changes
-        # data = request.form # a multidict containing POST data
+        json = request.get_json()
+        labels = json['labels']
+        data = json['data']
+        date = time.strftime("%Y-%m-%d")
 
-
-        data = request.json # a multidict containing POST data
-        # print(data)
-        events.append({'date':'2017-10-07', 'data':'Updated event added!'})
-        # events.append({'date':'2017-10-07', 'data':'Updated event added!'})
-
-        print('----')
-        # print(data)
-        # print(request)
-        print("before")
-        print("JSON: {}".format(request.get_json()))
-
-        print('--- Done ---')
-
-        # return send_from_directory('static', )
+        events.insert(0, {'date':date, 'data':data})
         return render_template('index.html')
-        # return current_app.send_static_file('index.html')
-        # return current_app.static_url_path('index.html')
 
 
 @app.route('/updated_events/')

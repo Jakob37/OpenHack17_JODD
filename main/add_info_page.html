@@ -110,7 +110,7 @@
             onclick="$.ajax({
             type: 'POST',
             url: 'http://127.0.0.1:5000/add_event/',
-            data: JSON.stringify({'data':'content'}),
+            data: JSON.stringify({'labels':document.getElementById('inputsm').value, 'data':document.getElementById('comment').value}),
             contentType: 'application/json'
             });">
 
