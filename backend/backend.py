@@ -14,8 +14,18 @@ def hello_world():
 @app.route('/current_events/')
 def current_events():
     events = [
-        {'date':'2017-10-06', 'data':'Kalle har haft ont i tan'},
-        {'date':'2017-10-05', 'data':'Kalle har varit hos tandlakaren och ar trott.'}
+        {'date':'2017-10-25', 'data':'Fell ill after eating .'},
+        {'date':'2017-10-16', 'data':'Got scared by a car yesterday, had trouble calming down. '
+                                     'Take it extra slowly when passing the road.'},
+        {'date':'2017-10-08', 'data':'Teeth are much better now. Should be able to eat '
+                                     'normally by now.'},
+        {'date':'2017-10-06', 'data':'Kalle has had trouble with his teeth during the night.'
+                                     ' He has not eaten properly, and is very tired. '
+                                     'Grandmother is available today if he needs to be '
+                                     'picked up extra early.'},
+        {'date':'2017-10-05', 'data':'Kalle has been visiting the dentist. He is extra tired '
+                                     'today. He should eat an extra banana after lunch. '
+                                     'May be angry in the afternoon.'}
     ]
     return json.dumps(events)
 
