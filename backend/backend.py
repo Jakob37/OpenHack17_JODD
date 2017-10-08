@@ -18,12 +18,12 @@ events = [
              'If not able to eat all food today, that is fine.'},
     {'date':'2017-10-05', 
      'tags':['daycare'], 
-     'data': 'Kalle has been visiting the dentist. He is extra tired '
+     'data': 'Pelle has been visiting the dentist. He is extra tired '
              'today. He should eat an extra banana after lunch. '
              'May be angry in the afternoon.'},
     {'date':'2017-10-04', 
      'tags':['daycare', 'medicalcare'], 
-     'data': 'Kalle has had trouble with his teeth during the night.'
+     'data': 'Pelle has had trouble with his teeth during the night.'
              ' He has not eaten properly, and is very tired. '
              'Grandfather is available today if he needs to be '
              'picked up extra early.'},
@@ -66,25 +66,6 @@ def add_event():
         events.insert(0, {'date':date, 'data':data})
         return '', 204
 
-
-@app.route('/updated_events/')
-def updated_events():
-    events = [
-        {'date':'2017-10-07', 'data':'Updated event added!'},
-        {'date':'2017-10-25', 'data':'Fell ill after eating .'},
-        {'date':'2017-10-16', 'data':'Got scared by a car yesterday, had trouble calming down. '
-                                     'Take it extra slowly when passing the road.'},
-        {'date':'2017-10-08', 'data':'Teeth are much better now. Should be able to eat '
-                                     'normally by now.'},
-        {'date':'2017-10-06', 'data':'Kalle has had trouble with his teeth during the night.'
-                                     ' He has not eaten properly, and is very tired. '
-                                     'Grandmother is available today if he needs to be '
-                                     'picked up extra early.'},
-        {'date':'2017-10-05', 'data':'Kalle has been visiting the dentist. He is extra tired '
-                                     'today. He should eat an extra banana after lunch. '
-                                     'May be angry in the afternoon.'}
-    ]
-    return json.dumps(events)
 
 @app.route('/medicins/')
 def medicins():
