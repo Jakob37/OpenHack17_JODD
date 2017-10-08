@@ -12,31 +12,31 @@ def hello_world():
 
 events = [
     {'date':'2017-10-06', 
-     'tags':['daycare', 'medicalcare', 'family'], 
+     'labels':['daycare', 'medicalcare', 'family'], 
      'data': 'Teeth are much better now. Should be able to eat '
              'normally by now, but still has some pain. '
              'If not able to eat all food today, that is fine.'},
     {'date':'2017-10-05', 
-     'tags':['daycare'], 
+     'labels':['daycare'], 
      'data': 'Pelle has been visiting the dentist. He is extra tired '
              'today. He should eat an extra banana after lunch. '
              'May be angry in the afternoon.'},
     {'date':'2017-10-04', 
-     'tags':['daycare', 'medicalcare'], 
+     'labels':['daycare', 'medicalcare'], 
      'data': 'Pelle has had trouble with his teeth during the night.'
              ' He has not eaten properly, and is very tired. '
              'Grandfather is available today if he needs to be '
              'picked up extra early.'},
     {'date':'2017-09-25', 
-     'tags':['daycare', 'medicalcare'], 
+     'labels':['daycare', 'medicalcare'], 
      'data': 'Fell ill after eating old food. Need to stay home from school today. '
              'Grandfather is taking care of him.'},
     {'date':'2017-09-16',
-     'tags':['daycare', 'family'], 
+     'labels':['daycare', 'family'], 
      'data': 'Got scared by a car yesterday, had trouble calming down. '
              'Take it extra slowly when passing the road.'},
     {'date':'2017-09-12', 
-     'tags':['daycare', 'family'], 
+     'labels':['daycare', 'family'], 
      'data': 'Fell and hurt his knee. Seems to be fine, but will not '
              'be able to participate in activities such as football today.'},
 ]
