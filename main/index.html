@@ -42,10 +42,10 @@
           <a class="nav-link text-light" href="about.html">About Pelle</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="checklists.html">Checklists</a>
+          <a class="nav-link text-light" href="medication.html">Medication</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="medication.html">Medication</a>
+          <a class="nav-link text-light" href="more_information.html">More information</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="contacts.html">Contacts</a>
@@ -114,8 +114,32 @@
 
               for (var i = 0; i < arr.length; i++) {
                   var json = arr[i];
+
                   var list_item = $('<a class="list-group-item m-1 careflow-text-dark careflow-list-item"></a>');
                   list_item.append('<h4 class="careflow-text-dark">' + json.date + '</h4>');
+                  if(json.labels)
+                  {
+                      for (var j = 0; j < json.labels.length; j++) {
+                          var badge_label = 'badge-primary';
+                          console.log(json.labels);
+                          switch(json.labels[j]){
+                              case 'daycare':
+                                  badge_label = 'badge-warning';
+                                  break;
+                              case 'medical':
+                                  badge_label = 'badge-danger';
+                                  break;
+                              case 'family':
+                                  badge_label = 'badge-info';
+                                  break;
+                              case 'school':
+                                  badge_label = 'badge-success';
+                                  break;
+                          }
+                          console.log(badge_label);
+                          list_item.append('<span class="badge ' + badge_label + '">' + json.labels[j] + '</span> ');
+                      }
+                  }
                   list_item.append('<p class="list-group-item-text careflow-text-dark">' + json.data + '</p>');
 
                   $("#events_list").append(list_item);

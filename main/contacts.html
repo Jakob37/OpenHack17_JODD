@@ -38,10 +38,10 @@
               <a class="nav-link text-light" href="about.html">About Pelle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="checklists.html">Checklists</a>
+              <a class="nav-link text-light" href="medication.html">Medication</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-light" href="medication.html">Medication</a>
+              <a class="nav-link text-light" href="more_information.html">More information</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-light" href="contacts.html">Contacts</a>
@@ -78,7 +78,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Add contact</h5>
+            <h5 class="modal-title careflow-text-dark" id="exampleModalLabel">Add contact</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -86,23 +86,23 @@
           <div class="modal-body">
             <form>
               <div class="form-group">
-                <label for="input_name">Name</label>
-                <input type="text" class="form-control" id="input_name" aria-describedby="name_help" placeholder="Anna Andersson">
+                <label class="careflow-text-dark" for="input_name">Name</label>
+                <input type="text" class="form-control careflow-text-dark" id="input_name" aria-describedby="name_help" placeholder="Anna Andersson">
               </div>
               <div class="form-group">
-                <label for="input_role">Role</label>
-                <input type="text" class="form-control" id="input_role" aria-describedby="name_help" placeholder="Teacher, Nurse, etc.">
+                <label class="careflow-text-dark" for="input_role">Role</label>
+                <input type="text" class="form-control careflow-text-dark" id="input_role" aria-describedby="name_help" placeholder="Teacher, Nurse, etc.">
               </div>              
               <div class="form-group">
-                <label for="input_phone">Phone number</label>
-                <input type="tel" class="form-control" id="input_phone" placeholder="07XXXXXXXX">
+                <label class="careflow-text-dark" for="input_phone">Phone number</label>
+                <input type="tel" class="form-control careflow-text-dark" id="input_phone" placeholder="07XXXXXXXX">
               </div>
               <div class="form-group">
-                <label for="input_email">Email</label>
-                <input type="email" class="form-control" id="input_email" placeholder="anna.andersson@mail.com">
+                <label class="careflow-text-dark" for="input_email">Email</label>
+                <input type="email" class="form-control careflow-text-dark" id="input_email" placeholder="anna.andersson@mail.com">
               </div>
               <div class="form-group">
-                <label for="input_tags">Tags</label>
+                <label class="careflow-text-dark" for="input_tags">Tags</label>
                 <br />
                 <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
                   <button type="button" id="tag_family" class="btn btn-outline-info disabled">Family</button>
@@ -134,6 +134,29 @@
               var json = arr[i];
               var list_item = $('<a class="list-group-item m-1"></a>');
               list_item.append('<h4>' + json.name + '</h4>');
+              if(json.labels)
+              {
+                  for (var j = 0; j < json.labels.length; j++) {
+                      var badge_label = 'badge-primary';
+                      console.log(json.labels);
+                      switch(json.labels[j]){
+                          case 'daycare':
+                              badge_label = 'badge-warning';
+                              break;
+                          case 'medical':
+                              badge_label = 'badge-danger';
+                              break;
+                          case 'family':
+                              badge_label = 'badge-info';
+                              break;
+                          case 'school':
+                              badge_label = 'badge-success';
+                              break;
+                      }
+                      console.log(badge_label);
+                      list_item.append('<span class="badge ' + badge_label + '">' + json.labels[j] + '</span> ');
+                  }
+              }
               list_item.append('<p class="list-group-item-text">' + json.role + '</p>');
               list_item.append('<p class="list-group-item-text">' + json.phone + '</p>');
               list_item.append('<p class="list-group-item-text">' + json.email + '</p>');
