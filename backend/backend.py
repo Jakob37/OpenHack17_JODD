@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route('/')
 def hello_world():
-    return 'Hello, world!'
+    return 'Welcome to CareFlow!'
 
 events = [
     {'date':'2017-10-06', 
