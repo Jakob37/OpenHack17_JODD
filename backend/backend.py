@@ -11,25 +11,41 @@ def hello_world():
     return 'Hello, world!'
 
 events = [
-        {'date':'2017-10-25', 'tags':['day care', 'medical care'], 'data':'Fell ill after eating .'},
-        {'date':'2017-10-16', 'tags':['day care'], 'data':'Got scared by a car yesterday, had trouble calming down. '
-                                 'Take it extra slowly when passing the road.'},
-        {'date':'2017-10-08', 'tags':['family', 'day care'], 'data':'Teeth are much better now. Should be able to eat '
-                                 'normally by now.'},
-        {'date':'2017-10-06', 'tags':['family', 'day care'], 'data':'Kalle has had trouble with his teeth during the night.'
-                                 ' He has not eaten properly, and is very tired. '
-                                 'Grandmother is available today if he needs to be '
-                                 'picked up extra early.'},
-        {'date':'2017-10-05', 'tags':['day care'], 'data':'Kalle has been visiting the dentist. He is extra tired '
-                                 'today. He should eat an extra banana after lunch. '
-                                 'May be angry in the afternoon.'}
+    {'date':'2017-10-06', 
+     'tags':['daycare', 'medicalcare', 'family'], 
+     'data': 'Teeth are much better now. Should be able to eat '
+             'normally by now, but still has some pain. '
+             'If not able to eat all food today, that is fine.'},
+    {'date':'2017-10-05', 
+     'tags':['daycare'], 
+     'data': 'Kalle has been visiting the dentist. He is extra tired '
+             'today. He should eat an extra banana after lunch. '
+             'May be angry in the afternoon.'},
+    {'date':'2017-10-04', 
+     'tags':['daycare', 'medicalcare'], 
+     'data': 'Kalle has had trouble with his teeth during the night.'
+             ' He has not eaten properly, and is very tired. '
+             'Grandfather is available today if he needs to be '
+             'picked up extra early.'},
+    {'date':'2017-09-25', 
+     'tags':['daycare', 'medicalcare'], 
+     'data': 'Fell ill after eating old food. Need to stay home from school today. '
+             'Grandfather is taking care of him.'},
+    {'date':'2017-09-16',
+     'tags':['daycare', 'family'], 
+     'data': 'Got scared by a car yesterday, had trouble calming down. '
+             'Take it extra slowly when passing the road.'},
+    {'date':'2017-09-12', 
+     'tags':['daycare', 'family'], 
+     'data': 'Fell and hurt his knee. Seems to be fine, but will not '
+             'be able to participate in activities such as football today.'},
 ]
 
 contact_list = [
-    {'name':'Annika Gunhild', 'role':'Mother', 'phone':'070-456 23 XX', 'email':'annika.gunhild@careflow.com', 'labels': ['family']},
-    {'name':'Lars Haberg', 'role':'Father', 'phone':'070-456 35 XX', 'email':'lars.haberg@careflow.com', 'labels': ['family']},
-    {'name':'Linda Rohult', 'role':'Teacher', 'phone':'070-234 95 XX', 'email':'linda_rohult@teaching.com', 'labels': ['school']},
-    {'name':'Rin Lyholm', 'role':'Football trainer', 'phone':'070-132 78 XX', 'email':'rin_lyholm_87@football.com', 'labels': ['daycare']},
+    {'name': 'Annika Gunhild', 'role': 'Mother', 'phone': '070-456 23 XX', 'email': 'annika.gunhild@careflow.com', 'labels': ['family']},
+    {'name': 'Lars Haberg', 'role': 'Father', 'phone': '070-456 35 XX', 'email': 'lars.haberg@careflow.com', 'labels': ['family']},
+    {'name': 'Linda Rohult', 'role': 'Teacher', 'phone': '070-234 95 XX', 'email': 'linda_rohult@teaching.com', 'labels': ['school']},
+    {'name': 'Rin Lyholm', 'role': 'Football trainer', 'phone': '070-132 78 XX', 'email': 'rin_lyholm_87@football.com', 'labels': ['daycare']},
 ]
 
 @app.route('/current_events/')
