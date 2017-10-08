@@ -26,28 +26,28 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light fixed-top" style="background-color: #3fc1c9;">
       <div class="container">
-        <a class="navbar-brand" href="index.html">CareFlow</a>
+        <a class="navbar-brand text-light" href="index.html">CareFlow</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link text-light" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Pelle</a>
+              <a class="nav-link text-light" href="about.html">About Pelle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="checklists.html">Checklists</a>
+              <a class="nav-link text-light" href="checklists.html">Checklists</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="medication.html">Medication</a>
+              <a class="nav-link text-light" href="medication.html">Medication</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contacts.html">Contacts</a>
+              <a class="nav-link text-light" href="contacts.html">Contacts</a>
             </li>
           </ul>
         </div>
@@ -57,7 +57,7 @@
     <!-- Page Content -->
     <div class="container">
 
-      <h1 class="my-4">Medication</h1>
+      <h2 class="my-4 careflow-text-dark">Medication</h2>
 
       <div id="medicin_list" class="list-group">
       </div>
@@ -70,9 +70,9 @@
 
             for (var i = 0; i < arr.length; i++) {
               var json = arr[i];
-              var list_item = $('<a class="list-group-item m-1"></a>');
-              list_item.append('<h4>' + json.name + '</h4>');
-              list_item.append('<p class="list-group-item-text">' + 
+              var list_item = $('<a class="list-group-item m-1 careflow-text-dark careflow-list-item"></a>');
+              list_item.append('<h4 class="careflow-text-dark">' + json.name + '</h4>');
+              list_item.append('<p class="list-group-item-text careflow-text-dark">' + 
                                json.data + '</p>');
 
               $("#medicin_list").append(list_item);

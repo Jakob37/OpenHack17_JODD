@@ -27,28 +27,28 @@
 <body>
 
 <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light fixed-top" style="background-color: #3fc1c9;">
   <div class="container">
-    <a class="navbar-brand" href="index.html">CareFlow</a>
+    <a class="navbar-brand text-light" href="index.html">CareFlow</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link text-light" href="index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="about.html">About Pelle</a>
+          <a class="nav-link text-light" href="about.html">About Pelle</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="checklists.html">Checklists</a>
+          <a class="nav-link text-light" href="checklists.html">Checklists</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="medication.html">Medication</a>
+          <a class="nav-link text-light" href="medication.html">Medication</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="contacts.html">Contacts</a>
+          <a class="nav-link text-light" href="contacts.html">Contacts</a>
         </li>
       </ul>
     </div>
@@ -58,12 +58,17 @@
 <!-- Page Content -->
 <div class="container">
 
-  <h1 class="my-4">Current information
-    <button type="button" style="float: right" class="btn btn-lg" data-toggle="modal" data-target="#add_info_page">
-      <span class="fa fa-pencil"></span>
-        New post
-    </button>
-  </h1>
+  <div class="row">
+    <div class="col-10">
+      <h2 class="my-4 careflow-text-dark">Current information</h2>
+    </div>
+
+    <div class="col align-self-center">
+      <button type="button" style="float:right; border-style:none; background-color: #3fc1c9;" class="btn btn-primary" data-toggle="modal" data-target="#add_info_page">
+        <span class="fa fa-plus"></span>
+      </button>
+    </div>
+  </div>
 
   <div id="events_list" class="list-group"></div>
 
@@ -72,7 +77,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Add new information</h5>
+          <h5 class="modal-title careflow-text-dark" id="exampleModalLabel">Add new information</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -80,7 +85,7 @@
         <div class="modal-body">
         <form>
           <div class="form-group">
-            <label for="inputsm">Tags</label>
+            <label class="careflow-text-dark" for="inputsm">Tags</label>
             <br />
             <div class="btn-group" role="group" aria-label="Basic example" data-toggle="buttons">
               <button type="button" id="tag_family" value="family" class="btn btn-outline-info disabled">Family</button>
@@ -89,14 +94,14 @@
               <button type="button" id="tag_medical" value="medical" class="btn btn-outline-danger disabled">Medical</button>
             </div>
           </div>
-          <label for="comment">Comment:</label>
-          <textarea class="form-control mb-4" rows="5" id="comment" name="description"></textarea>
+          <label class="careflow-text-dark" for="comment">Comment:</label>
+          <textarea class="form-control mb-4 careflow-text-dark" rows="5" id="comment" name="description"></textarea>
         </form>
 
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">New post</button>
+          <button type="button" style="border-style:none; background-color: #3fc1c9;" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">New post</button>
         </div>
       </div>
     </div>
@@ -109,9 +114,9 @@
 
               for (var i = 0; i < arr.length; i++) {
                   var json = arr[i];
-                  var list_item = $('<a class="list-group-item m-1"></a>');
-                  list_item.append('<h4>' + json.date + '</h4>');
-                  list_item.append('<p class="list-group-item-text">' + json.data + '</p>');
+                  var list_item = $('<a class="list-group-item m-1 careflow-text-dark careflow-list-item"></a>');
+                  list_item.append('<h4 class="careflow-text-dark">' + json.date + '</h4>');
+                  list_item.append('<p class="list-group-item-text careflow-text-dark">' + json.data + '</p>');
 
                   $("#events_list").append(list_item);
               }

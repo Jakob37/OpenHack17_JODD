@@ -16,33 +16,35 @@
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
 
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
   </head>
 
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light fixed-top" style="background-color: #3fc1c9;"">
       <div class="container">
-        <a class="navbar-brand" href="index.html">CareFlow</a>
+        <a class="navbar-brand text-light" href="index.html">CareFlow</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link text-light" href="index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Pelle</a>
+              <a class="nav-link text-light" href="about.html">About Pelle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="checklists.html">Checklists</a>
+              <a class="nav-link text-light" href="checklists.html">Checklists</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="medication.html">Medication</a>
+              <a class="nav-link text-light" href="medication.html">Medication</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contacts.html">Contacts</a>
+              <a class="nav-link text-light" href="contacts.html">Contacts</a>
             </li>
           </ul>
         </div>
@@ -58,16 +60,18 @@
     <div class="container">
 
       <div class="row">
-        <div class="col">
-          <h1 class="my-4">Contacts</h1>
+        <div class="col-10">
+          <h2 class="my-4 careflow-text-dark">Contacts</h2>
         </div>
 
         <div class="col align-self-center">
-          <button type="button" style="float:right" class="btn btn-primary" data-toggle="modal" data-target="#add_contact">+</button>
+          <button type="button" style="float:right; border-style:none; background-color: #3fc1c9;"  class="btn btn-primary" data-toggle="modal" data-target="#add_contact">
+            <span class="fa fa-plus"></span>
+          </button>
         </div>
       </div>
 
-      <div id="medicin_list" class="col list-group"></div>
+      <div id="medicin_list" class="col list-group careflow-text-dark"></div>
 
     <!-- Modal -->
     <div class="modal fade" id="add_contact" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -112,7 +116,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">Add Contact</button>
+            <button type="button" style="border-style:none; background-color: #3fc1c9;" class="btn btn-primary" data-dismiss="modal" onclick="on_submit()">Add Contact</button>
           </div>
         </div>
       </div>

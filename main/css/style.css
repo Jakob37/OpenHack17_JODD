@@ -38,3 +38,10 @@ body {
     margin-left: 20px;
 }
 
+.careflow-text-dark {
+    color: #364f6b;
+}
+
+.careflow-list-item {
+    background-color: #fbfbfb;
+}
