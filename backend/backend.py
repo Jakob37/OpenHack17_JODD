@@ -18,12 +18,12 @@ events = [
              'If not able to eat all food today, that is fine.'},
     {'date':'2017-10-05', 
      'labels':['daycare'], 
-     'data': 'Kalle has been visiting the dentist. He is extra tired '
+     'data': 'Pelle has been visiting the dentist. He is extra tired '
              'today. He should eat an extra banana after lunch. '
              'May be angry in the afternoon.'},
     {'date':'2017-10-04', 
      'labels':['daycare', 'medicalcare'], 
-     'data': 'Kalle has had trouble with his teeth during the night.'
+     'data': 'Pelle has had trouble with his teeth during the night.'
              ' He has not eaten properly, and is very tired. '
              'Grandfather is available today if he needs to be '
              'picked up extra early.'},
@@ -42,10 +42,11 @@ events = [
 ]
 
 contact_list = [
-    {'name': 'Annika Gunhild', 'role': 'Mother', 'phone': '070-456 23 XX', 'email': 'annika.gunhild@careflow.com', 'labels': ['family']},
-    {'name': 'Lars Haberg', 'role': 'Father', 'phone': '070-456 35 XX', 'email': 'lars.haberg@careflow.com', 'labels': ['family']},
-    {'name': 'Linda Rohult', 'role': 'Teacher', 'phone': '070-234 95 XX', 'email': 'linda_rohult@teaching.com', 'labels': ['school']},
-    {'name': 'Rin Lyholm', 'role': 'Football trainer', 'phone': '070-132 78 XX', 'email': 'rin_lyholm_87@football.com', 'labels': ['daycare']},
+    {'name': 'Annika Gunhild', 'role': 'Mother', 'phone': '070-456 23 XX', 'email': 'annika.gunhild@teloa.com', 'labels': ['family']},
+    {'name': 'Lars Haberg', 'role': 'Father', 'phone': '070-456 35 XX', 'email': 'lars.haberg@teloa.com', 'labels': ['family']},
+    {'name': 'Rolf Gunhild', 'role': 'Grandfather. May help out when parents not available.', 'phone': '070-556 35 XX', 'email': 'rolfgunhild1@oldmail.com', 'labels': ['family']},
+    {'name': 'Linda Rohult', 'role': 'Class teacher. Working with Per during weeks.', 'phone': '070-234 95 XX', 'email': 'linda_rohult@hjortsberg.com', 'labels': ['school']},
+    {'name': 'Rin Lyholm', 'role': 'Football trainer. Trains Per Tuesdays and Thursdays.', 'phone': '070-132 78 XX', 'email': 'rin_lyholm_87@football.com', 'labels': ['daycare']},
 ]
 
 @app.route('/current_events/')
@@ -66,30 +67,13 @@ def add_event():
         return '', 204
 
 
-@app.route('/updated_events/')
-def updated_events():
-    events = [
-        {'date':'2017-10-07', 'data':'Updated event added!'},
-        {'date':'2017-10-25', 'data':'Fell ill after eating .'},
-        {'date':'2017-10-16', 'data':'Got scared by a car yesterday, had trouble calming down. '
-                                     'Take it extra slowly when passing the road.'},
-        {'date':'2017-10-08', 'data':'Teeth are much better now. Should be able to eat '
-                                     'normally by now.'},
-        {'date':'2017-10-06', 'data':'Kalle has had trouble with his teeth during the night.'
-                                     ' He has not eaten properly, and is very tired. '
-                                     'Grandmother is available today if he needs to be '
-                                     'picked up extra early.'},
-        {'date':'2017-10-05', 'data':'Kalle has been visiting the dentist. He is extra tired '
-                                     'today. He should eat an extra banana after lunch. '
-                                     'May be angry in the afternoon.'}
-    ]
-    return json.dumps(events)
-
 @app.route('/medicins/')
 def medicins():
     meds = [
-        {'name':'Paracetamol', 'data':'250mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
-        {'name':'Sumatriptan', 'data':'50mg vid tecken av migrananfall.'}
+        {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
+        {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
+        {'name': 'Paracetamol', 'data': '250 mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
+        {'name': 'Sumatriptan', 'data': '50 mg vid tecken av migrananfall.'}
     ]
     return json.dumps(meds)
 
