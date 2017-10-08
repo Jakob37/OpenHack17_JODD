@@ -12,7 +12,7 @@ def hello_world():
 
 events = [
     {'date':'2017-10-06', 
-     'labels':['daycare', 'medicalcare', 'family'], 
+     'labels':['daycare', 'medical', 'family'], 
      'data': 'Teeth are much better now. Should be able to eat '
              'normally by now, but still has some pain. '
              'If not able to eat all food today, that is fine.'},
@@ -22,13 +22,13 @@ events = [
              'today. He should eat an extra banana after lunch. '
              'May be angry in the afternoon.'},
     {'date':'2017-10-04', 
-     'labels':['daycare', 'medicalcare'], 
+     'labels':['daycare', 'medical'], 
      'data': 'Pelle has had trouble with his teeth during the night.'
              ' He has not eaten properly, and is very tired. '
              'Grandfather is available today if he needs to be '
              'picked up extra early.'},
     {'date':'2017-09-25', 
-     'labels':['daycare', 'medicalcare'], 
+     'labels':['daycare', 'medical'], 
      'data': 'Fell ill after eating old food. Need to stay home from school today. '
              'Grandfather is taking care of him.'},
     {'date':'2017-09-16',
