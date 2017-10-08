@@ -152,8 +152,13 @@
             type: 'POST',
             url: 'http://127.0.0.1:5000/add_event/',
             data: JSON.stringify({'labels':  get_labels(), 'data':document.getElementById('comment').value}),
-            contentType: 'application/json'
+            contentType: 'application/json',
+            success: on_submit_success
             });
+      }
+
+      on_submit_success = () => {
+        location.reload();
       }
 
       get_labels = () => {

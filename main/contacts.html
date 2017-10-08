@@ -176,8 +176,14 @@
                                     'phone': document.getElementById('input_phone').value,
                                     'email': document.getElementById('input_email').value,
                                     'labels': get_labels() }),
-              contentType: 'application/json'
+              contentType: 'application/json',
+              success: on_submit_success
               });
+        }
+
+
+        on_submit_success = () => {
+          location.reload();
         }
 
         get_labels = () => {
