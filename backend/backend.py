@@ -70,7 +70,7 @@ def add_event():
 @app.route('/medicins/')
 def medicins():
     meds = [
-        {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
+        {'name': 'Focalin', 'data': '30 mg, 4 time per day (7:00, 12:00, 17:00, 22:00).'},
         {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
         {'name': 'Paracetamol', 'data': '250 mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
         {'name': 'Sumatriptan', 'data': '50 mg vid tecken av migrananfall.'}
