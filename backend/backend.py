@@ -30,10 +30,11 @@ events = [
 ]
 
 contact_list = [
-    {'name': 'Annika Gunhild', 'role': 'Mother', 'phone': '070-456 23 XX', 'email': 'annika.gunhild@careflow.com', 'labels': ['family']},
-    {'name': 'Lars Haberg', 'role': 'Father', 'phone': '070-456 35 XX', 'email': 'lars.haberg@careflow.com', 'labels': ['family']},
-    {'name': 'Linda Rohult', 'role': 'Teacher', 'phone': '070-234 95 XX', 'email': 'linda_rohult@teaching.com', 'labels': ['school']},
-    {'name': 'Rin Lyholm', 'role': 'Football trainer', 'phone': '070-132 78 XX', 'email': 'rin_lyholm_87@football.com', 'labels': ['daycare']},
+    {'name': 'Annika Gunhild', 'role': 'Mother', 'phone': '070-456 23 XX', 'email': 'annika.gunhild@teloa.com', 'labels': ['family']},
+    {'name': 'Lars Haberg', 'role': 'Father', 'phone': '070-456 35 XX', 'email': 'lars.haberg@teloa.com', 'labels': ['family']},
+    {'name': 'Rolf Gunhild', 'role': 'Grandfather. May help out when parents not available.', 'phone': '070-556 35 XX', 'email': 'rolfgunhild1@oldmail.com', 'labels': ['family']},
+    {'name': 'Linda Rohult', 'role': 'Class teacher. Working with Per during weeks.', 'phone': '070-234 95 XX', 'email': 'linda_rohult@hjortsberg.com', 'labels': ['school']},
+    {'name': 'Rin Lyholm', 'role': 'Football trainer. Trains Per Tuesdays and Thursdays.', 'phone': '070-132 78 XX', 'email': 'rin_lyholm_87@football.com', 'labels': ['daycare']},
 ]
 
 @app.route('/current_events/')
@@ -76,8 +77,10 @@ def updated_events():
 @app.route('/medicins/')
 def medicins():
     meds = [
-        {'name':'Paracetamol', 'data':'250mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
-        {'name':'Sumatriptan', 'data':'50mg vid tecken av migrananfall.'}
+        {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
+        {'name': 'Atomoxetine', 'data': '25 mg, 1 time per day (7:00).'},
+        {'name': 'Paracetamol', 'data': '250 mg 3 ggr om dagen. (8:00, 13:00, 17:00)'},
+        {'name': 'Sumatriptan', 'data': '50 mg vid tecken av migrananfall.'}
     ]
     return json.dumps(meds)
 
