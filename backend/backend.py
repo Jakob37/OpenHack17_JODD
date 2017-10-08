@@ -63,7 +63,7 @@ def add_event():
         data = json['data']
         date = time.strftime("%Y-%m-%d")
 
-        events.insert(0, {'date':date, 'data':data})
+        events.insert(0, {'date':date, 'labels':labels, 'data':data})
         return '', 204
 
 
