@@ -12,6 +12,15 @@ As a parent to a kid with a functional variation there are a lot of information 
 
 It can also be used as a quick guide for a new person comming in to the kids life with useful tips on how interact with the kid. 
 
+# Installation
+
+To run CareFlow you need to have Flask installed and start an instance of the backend server. Please see the installation guide [http://flask.pocoo.org/](here)
+
+```
+$ pip install Flask
+$ FLASK_APP=backend/backend.py flask run
+```
+Then you can open the index.html file in your browser and everything should work. 
 
 # Team members
 
